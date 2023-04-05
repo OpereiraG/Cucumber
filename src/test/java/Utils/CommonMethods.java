@@ -1,5 +1,6 @@
 package Utils;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -41,5 +42,9 @@ public class CommonMethods {
 
     public  static void doClick(WebElement element){
         element.click();
+    }
+    public static void sendText(WebElement element, String text){
+        element.clear();
+        element.sendKeys(text);
     }
 }
