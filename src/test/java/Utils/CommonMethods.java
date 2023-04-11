@@ -7,8 +7,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
+import java.util.List;
 
 public class CommonMethods {
   public static WebDriver driver;
@@ -46,5 +48,29 @@ public class CommonMethods {
     public static void sendText(WebElement element, String text){
         element.clear();
         element.sendKeys(text);
+    }
+    public static Select clickOnDropDown(WebElement element){
+
+        Select select = new Select(element);
+        return select;
+    }
+    public static void selectByValue(WebElement element,String value){
+        clickOnDropDown(element).selectByValue(value);
+    }
+    public static void selectByVisibleText(WebElement element, String text){
+        clickOnDropDown(element).selectByVisibleText(text);
+    }
+    public  static  void  selectByIndex(WebElement element, int index)
+    {
+        clickOnDropDown(element).selectByIndex(index);
+    }
+    public static void selectByOptions(WebElement element,String text){
+        List<WebElement> options = clickOnDropDown(element).getOptions();
+        for (WebElement option : options) {
+            String ddlOptionText = option.getText();
+            if (ddlOptionText.equals(text)){
+                option.click();
+            }
+        }
     }
 }

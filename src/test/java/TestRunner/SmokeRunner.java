@@ -4,7 +4,13 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src\\test\\resources\\Features",glue = "StepDefinitions" ,dryRun = false, tags = "@testCase1")// dryRun just generates the code with true (keyword)/ and will run the testCase with false (keyword)
+@CucumberOptions(features = "src\\test\\resources\\Features",
+        glue = "StepDefinitions" ,
+        dryRun = false, // dryRun just generates the code with true (keyword)/ and will run the testCase with false (keyword)
+        tags = "@smoke2",
+        plugin = {"pretty"}
+)
+
 public class SmokeRunner {
 
 }
