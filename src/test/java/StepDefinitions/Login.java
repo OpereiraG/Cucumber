@@ -2,6 +2,7 @@ package StepDefinitions;
 
 import Utils.CommonMethods;
 import Utils.ConfigReader;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,6 +15,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import java.time.Duration;
+import java.util.List;
+import java.util.Map;
 
 public class Login extends CommonMethods {
 
@@ -62,6 +65,22 @@ public class Login extends CommonMethods {
 
         WebElement passwordTextBox = driver.findElement(By.id("txtPassword"));
         sendText(passwordTextBox,password);
+    }
+    @When("user enters username and password and verifies login")
+    public void user_enters_username_and_password_and_verifies_login(DataTable dataTable) {
+        List<Map<String ,String >> userCredentials=dataTable.asMaps();
+        for (Map<String, String> userCredential : userCredentials) {
+            String username = userCredential.get("username");
+            String password = userCredential.get("password");
+
+            WebElement usernameTextBox = driver.findElement(By.id("txtUsername"));
+            sendText(usernameTextBox,username);
+
+            WebElement passwordTextBox = driver.findElement(By.id("txtPassword"));
+            sendText(passwordTextBox,password);
+
+        }
+
     }
 
 }
