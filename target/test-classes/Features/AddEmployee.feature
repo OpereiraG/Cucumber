@@ -1,6 +1,6 @@
 Feature: Employee
 
-  @smoke
+  @testCase2
   Scenario: Adding new employee
     #Given open the browser and launch HMRS application
     When user enters valid email and valid password

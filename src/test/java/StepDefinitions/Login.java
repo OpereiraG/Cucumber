@@ -1,5 +1,6 @@
 package StepDefinitions;
 
+import Pages.LoginPage;
 import Utils.CommonMethods;
 import Utils.ConfigReader;
 import io.cucumber.datatable.DataTable;
@@ -32,18 +33,22 @@ public class Login extends CommonMethods {
     @When("user enters valid email and valid password")
     public void user_enters_valid_email_and_valid_password() {
        // driver.findElement(By.id("txtUsername")).sendKeys(ConfigReader.getPropertyValue("username"));
-        WebElement usernameTextBox = driver.findElement(By.id("txtUsername"));
-        sendText(usernameTextBox,ConfigReader.getPropertyValue("username"));
+
+        //LoginPage loginPage = new LoginPage();
+
+        sendText(loginPage.usernameTextBox,ConfigReader.getPropertyValue("username"));
         //driver.findElement(By.id("txtPassword")).sendKeys(ConfigReader.getPropertyValue("password"));
-        WebElement passwordTextBox = driver.findElement(By.id("txtPassword"));
-        sendText(passwordTextBox,ConfigReader.getPropertyValue("password"));
+
+        sendText(loginPage.passwordTextBox,ConfigReader.getPropertyValue("password"));
     }
 
     @When("click on login button")
     public void click_on_login_button() {
 
-        WebElement loginBtn = driver.findElement(By.id("btnLogin"));
-        doClick(loginBtn);
+        //LoginPage loginPage = new LoginPage();
+
+
+        doClick(loginPage.loginBtn);
     }
 
     @Then("user successfully logged into the application")
@@ -59,25 +64,35 @@ public class Login extends CommonMethods {
     }
     @When("user enters valid {string} and valid {string}")
     public void user_enters_valid_and_valid(String username, String password) {
+//LoginPage loginPage = new LoginPage();
 
-        WebElement usernameTextBox = driver.findElement(By.id("txtUsername"));
-        sendText(usernameTextBox,username);
+        sendText(loginPage.usernameTextBox,username);
 
-        WebElement passwordTextBox = driver.findElement(By.id("txtPassword"));
-        sendText(passwordTextBox,password);
+
+        sendText(loginPage.passwordTextBox,password);
     }
     @When("user enters username and password and verifies login")
     public void user_enters_username_and_password_and_verifies_login(DataTable dataTable) {
+       // LoginPage loginPage = new LoginPage();
         List<Map<String ,String >> userCredentials=dataTable.asMaps();
         for (Map<String, String> userCredential : userCredentials) {
             String username = userCredential.get("username");
             String password = userCredential.get("password");
 
-            WebElement usernameTextBox = driver.findElement(By.id("txtUsername"));
-            sendText(usernameTextBox,username);
 
-            WebElement passwordTextBox = driver.findElement(By.id("txtPassword"));
-            sendText(passwordTextBox,password);
+            sendText(loginPage.usernameTextBox,username);
+
+
+            sendText(loginPage.passwordTextBox,password);
+
+
+            doClick(loginPage.loginBtn);
+
+
+            doClick(loginPage.welcomeIcon);
+
+
+            doClick(loginPage.logoutLink);
 
         }
 

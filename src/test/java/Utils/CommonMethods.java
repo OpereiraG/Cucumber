@@ -1,5 +1,6 @@
 package Utils;
 
+import StepDefinitions.PageInitializer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,7 +13,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.time.Duration;
 import java.util.List;
 
-public class CommonMethods {
+public class CommonMethods extends PageInitializer {
   public static WebDriver driver;
     public static void openBrowserAndLaunchApplication (){
         ConfigReader.readProperties();
@@ -36,6 +37,7 @@ public class CommonMethods {
         driver.manage().window().maximize();
         driver.get(ConfigReader.getPropertyValue("url"));
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(Constants.Wait_Time));
+        initializePageObjects();
     }
     public static void closeBrowser(){
         driver.close();
