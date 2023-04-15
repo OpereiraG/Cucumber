@@ -1,16 +1,19 @@
 package Utils;
 
 import StepDefinitions.PageInitializer;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 import java.util.List;
 
 public class CommonMethods extends PageInitializer {
@@ -75,4 +78,33 @@ public class CommonMethods extends PageInitializer {
             }
         }
     }
+
+    //================ScreenShot==================
+    public static byte[] takeScreenShot(String imageName){
+
+        //This is casts the webDriver instance 'driver' to TakeScreenShot Interface
+        TakesScreenshot ts = (TakesScreenshot)driver;
+
+        //This captures the screenshot and store it as byte array
+        byte[] picBytes=ts.getScreenshotAs(OutputType.BYTES);
+
+        //This captures the screenshot and stores it as a file in the sourceFile variable
+        File sourcePath=ts.getScreenshotAs(OutputType.FILE);
+
+        try {
+            FileUtils.copyFile(sourcePath,new File(Constants.SCREENSHOT_FILEPATH+imageName+getTimeStamp("yyyy-MM-dd-HH-mm-ss")+".png"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return picBytes;
+    }
+
+    public static String getTimeStamp(String pattern){
+
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+        return sdf.format(date);
+
+    }
+
 }
