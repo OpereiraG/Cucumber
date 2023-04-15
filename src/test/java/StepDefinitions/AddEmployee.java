@@ -21,6 +21,7 @@ public class AddEmployee extends CommonMethods {
     }
     @When("user enters firstname,middle name and lastname")
     public void user_enters_firstname_middle_name_and_lastname() {
+
         //driver.findElement(By.id("firstName")).sendKeys(ConfigReader.getPropertyValue("firstName"));
         //WebElement firsNameTextBox = driver.findElement(By.id("firstName"));
         sendText(addEmployeePage.firsNameTextBox, ConfigReader.getPropertyValue("firstName"));

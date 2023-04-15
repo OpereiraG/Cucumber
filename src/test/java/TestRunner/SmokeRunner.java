@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
         glue = "StepDefinitions" ,
         dryRun = false, // dryRun just generates the code with true (keyword)/ and will run the testCase with false (keyword)
         tags = "@testCase2",
-        plugin = {"pretty", "html:target/Cucumber.html","json:target/Cucumber.json"}
+        plugin = {"pretty", "html:target/Cucumber.html","json:target/Cucumber.json","rerun:target/failed.txt"}
         //plugin = {"pretty"}
 )
 
