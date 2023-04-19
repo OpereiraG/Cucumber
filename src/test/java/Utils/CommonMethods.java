@@ -2,6 +2,7 @@ package Utils;
 
 import StepDefinitions.PageInitializer;
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -40,9 +41,17 @@ public class CommonMethods extends PageInitializer {
         driver.manage().window().maximize();
         driver.get(ConfigReader.getPropertyValue("url"));
         driver.manage().timeouts().implicitlyWait(Duration.ofMillis(Constants.Wait_Time));
-        initializePageObjects();
+        initializePageObjects(); //This will initialize all the pages we have in our Page
+                                //PageInitializer class along with the launching of application
+        //To configure the File and pattern it has
+        DOMConfigurator.configure("log4j.xml");
+        Log.startTestCase("This is the beginning of my Test Case");
+        Log.info("My test case is executing right now");
+        Log.warning("My test case might have some trivial issues");
     }
-    public static void closeBrowser(){
+    public static void closeBrowser() {
+        Log.info("This test case is about to get completed");
+        Log.endTestCase("This test case is finished");
         driver.close();
     }
 
