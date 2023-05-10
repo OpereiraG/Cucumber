@@ -60,7 +60,7 @@ public class CommonMethods extends PageInitializer {
         element.click();
     }
     public static void sendText(WebElement element, String text){
-        element.clear();
+        //element.clear();
         element.sendKeys(text);
     }
     public static Select clickOnDropDown(WebElement element){

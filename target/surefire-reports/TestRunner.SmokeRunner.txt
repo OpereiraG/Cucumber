@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: TestRunner.SmokeRunner
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.084 s - in TestRunner.SmokeRunner
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.148 s - in TestRunner.SmokeRunner

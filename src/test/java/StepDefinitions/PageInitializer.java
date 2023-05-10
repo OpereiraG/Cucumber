@@ -1,14 +1,17 @@
 package StepDefinitions;
 
 import Pages.AddEmployeePage;
+import Pages.GooglePage;
 import Pages.LoginPage;
 
 public class PageInitializer {
 public static LoginPage loginPage;
 public static AddEmployeePage addEmployeePage;
+public static GooglePage googlePage;
     public static void initializePageObjects(){
         loginPage=new LoginPage();
         addEmployeePage=new AddEmployeePage();
+        googlePage = new GooglePage();
     }
 
 }
